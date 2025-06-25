@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Surprise</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      overflow-x: hidden;
+    }
+
+    .center-button {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .reveal-btn {
+      font-size: 24px;
+      padding: 15px 30px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .hidden-content {
+      display: none;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: deeppink;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .left-side {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .left-side img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 10px;
+    }
+
+    .right-side {
+      flex: 2;
+      border: 3px solid #ff69b4;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      text-align: justify;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 30px;
+      font-weight: bold;
+    }
+
+    .flower {
+      position: fixed;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear infinite;
+      z-index: 999;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    .gift-button {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0 10px;
+    }
+
+    .gift-section {
+      display: none;
+      text-align: center;
+      background-color: #ffe4e1;
+      padding: 30px;
+      border-top: 2px dashed deeppink;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .gift-section img {
+      max-width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .gift-section h2 {
+      color: deeppink;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-side, .right-side {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .left-side img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .right-side {
+    margin-top: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Initial Button -->
+  <div class="center-button" id="start-screen">
+    <button class="reveal-btn" onclick="revealSurprise()">Click to Reveal Your Birthday Surprise 🎁</button>
+  </div>
+
+  <!-- Hidden Birthday Content -->
+  <div class="hidden-content" id="surprise-content">
+    <h1>🎉 HAPPY BIRTHDAY PRAKRITI 🎉</h1>
+    <div class="container">
+      <div class="left-side">
+        <img src="second.jpg" alt="Fun Memories">
+        <img src="first.jpg" alt="Us Together">
+      </div>
+      <div class="right-side">
+        <p>
+          I just wanted to take a little time to say how truly special those two years were. Studying together, sharing notes, panicking before exams, laughing at the silliest things—you became someone I could always rely on. I still smile when I think about those long walks home, even when we were tired and the road felt endless. Somehow, we never ran out of things to talk about.
+        </p>
+        <p>
+          And of course, how can I forget our food adventures? Complaining when food didn’t hit or laughing till we were too full to move—it’s those moments I’ll always treasure. Thank you for everything. No matter where life takes us next, I’ll always cheer for you. Let’s meet again soon, for more food and more fun—just like old times.
+        </p>
+        <p class="signature">
+          With lots of love and gratitude,<br>
+          Prajwal.
+        </p>
+      </div>
+    </div>
+
+    <!-- 🎁 Gift Reveal Button -->
+    <div class="gift-button">
+      <button class="reveal-btn" onclick="revealGift()">🎁 Gift Here Hurrayyyy 🎁</button>
+    </div>
+
+    <!-- 🎁 Gift Section -->
+    <div class="gift-section" id="gift-section">
+      <h2>Here’s a  Something for You! 💝</h2>
+      <p>I made this just for you — a memory to keep and smile at whenever you want.This might not look exactly like you but i just wanted u to gift u a cat since u like em.Hope you like it!</p>
+      <img src="gift.png" alt="Your Gift">
+      <!-- You can also use a link:
+      <p><a href="your-gift-link" target="_blank">Click here to open your surprise!</a></p>
+      -->
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+   function revealSurprise() {
+  document.getElementById("start-screen").style.display = "none";
+  document.getElementById("surprise-content").style.display = "block";
+  startFlowerRain();
+
+  // Play the birthday audio
+  document.getElementById("birthday-audio").play();
+}
+
+    function revealGift() {
+      document.getElementById("gift-section").style.display = "block";
+    }
+
+    function startFlowerRain() {
+      const emojis = ["🌸", "🌺", "🌼", "💐", "🌹"];
+      setInterval(() => {
+        const flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        flower.style.left = Math.random() * window.innerWidth + "px";
+        flower.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(flower);
+
+        setTimeout(() => {
+          flower.remove();
+        }, 5000);
+      }, 300);
+    }
+  </script>
+<audio id="birthday-audio" src="audio.mp3" loop></audio>
+
+</body>
+</html>
