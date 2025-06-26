@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Birthday Surprise</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -149,6 +148,24 @@
     margin-top: 20px;
   }
 }
+.bear-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.bear {
+  width: 100px;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .bear {
+    width: 50px;
+  }
+}
 
 
   </style>
@@ -161,8 +178,12 @@
   </div>
 
   <!-- Hidden Birthday Content -->
-  <div class="hidden-content" id="surprise-content">
+<div class="hidden-content" id="surprise-content">
+  <div class="bear-row">
+    <img src="bear.gif" alt="Dancing Bear Left" class="bear">
     <h1>🎉 HAPPY BIRTHDAY PRAKRITI 🎉</h1>
+    <img src="bear.gif" alt="Dancing Bear Right" class="bear">
+  </div>
     <div class="container">
       <div class="left-side">
         <img src="second.jpg" alt="Fun Memories">
